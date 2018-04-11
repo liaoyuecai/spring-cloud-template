@@ -1,0 +1,12 @@
+server:
+  port: 7071
+
+
+spring:
+  application:
+    name: application
+eureka:
+  client:
+    service-url:
+      default-zone: 127.0.0.1:8761/eureka/
+
