@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config
+#      uri: http://127.0.0.1:7666/
+#      profile: dev
+#      label: master
+#endpoints:
+#  refresh:
+#    enabled: true
+#    sensitive: false
