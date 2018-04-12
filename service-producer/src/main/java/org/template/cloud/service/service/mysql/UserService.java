@@ -11,7 +11,11 @@ public interface UserService {
 
     User findById(String id);
 
+    User findByName(String name);
+
     int insert(User user);
+
+    int insert(List<User> users);
 
     int update(User user);
 

@@ -27,6 +27,15 @@
         #{id}, #{userName}, #{password})
     </insert>
 
+    <insert id="saveUserList" parameterType="org.template.cloud.service.domain.bean.mysql.User">
+        INSERT INTO user (
+        id, user_name, password)
+        VALUES
+        <foreach collection="users" item="user" separator=",">
+            (#{user.id}, #{user.userName}, #{user.password})
+        </foreach>
+    </insert>
+
     <update id="updateUserByUserName" parameterType="org.template.cloud.service.domain.bean.mysql.User">
         UPDATE user
         SET password = #{password}

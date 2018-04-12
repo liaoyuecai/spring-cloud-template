@@ -11,6 +11,9 @@ spring:
     username: root
     password: 123456
     type: com.zaxxer.hikari.HikariDataSource
+  data:
+    mongodb:
+      uri: mongodb://127.0.0.1:27017/test
 eureka:
   client:
     service-url:

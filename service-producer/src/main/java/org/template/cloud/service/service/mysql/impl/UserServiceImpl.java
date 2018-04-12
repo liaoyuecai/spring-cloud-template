@@ -22,17 +22,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(String id) {
-        return null;
+        return userMapper.getUserById(id);
+    }
+
+    @Override
+    public User findByName(String name) {
+        return userMapper.getUserByUserName(name);
     }
 
     @Override
     public int insert(User user) {
-        return 0;
+        return userMapper.saveUser(user);
+    }
+
+    @Override
+    public int insert(List<User> users) {
+        return userMapper.saveUserList(users);
     }
 
     @Override
     public int update(User user) {
-        return 0;
+        return userMapper.updateUserByUserName(user);
     }
 
     @Override
