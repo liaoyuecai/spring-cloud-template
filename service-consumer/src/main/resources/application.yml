@@ -9,4 +9,3 @@ eureka:
   client:
     service-url:
       default-zone: 127.0.0.1:8761/eureka/
-
