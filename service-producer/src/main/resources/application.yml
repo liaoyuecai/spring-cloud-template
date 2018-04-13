@@ -15,11 +15,6 @@ spring:
     mongodb:
       uri: mongodb://127.0.0.1:27017/test
 
-eureka:
-  client:
-    service-url:
-      default-zone: 127.0.0.1:8761/eureka/
-
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   typeAliasesPackage: tk.mapper.model
