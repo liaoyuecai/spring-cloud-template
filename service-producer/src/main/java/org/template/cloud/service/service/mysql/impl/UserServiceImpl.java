@@ -2,7 +2,7 @@ package org.template.cloud.service.service.mysql.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.template.cloud.service.dao.mysql.UserMapper;
+import org.template.cloud.service.dao.mysql.mapper.UserMapper;
 import org.template.cloud.service.domain.bean.mysql.User;
 import org.template.cloud.service.service.mysql.UserService;
 

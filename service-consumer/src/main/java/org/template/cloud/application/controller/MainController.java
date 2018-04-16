@@ -21,6 +21,7 @@ public class MainController {
         return remote.hello(name);
     }
 
+
     /**
      * 熔断器失败返回
      * 这里的参数必须与熔断方法参数一致
@@ -30,4 +31,6 @@ public class MainController {
     public String fallback_test(String name) {
         return "资源损坏或资源紧张";
     }
+
+
 }

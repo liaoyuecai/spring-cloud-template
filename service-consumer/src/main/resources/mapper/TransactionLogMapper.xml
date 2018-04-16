@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.template.cloud.application.transaction.dao.TransactionLogMapper">
+
+    <select id="findAll" resultType="org.template.cloud.application.transaction.bean.TransactionLog">
+        SELECT *
+        FROM transaction_log
+    </select>
+
+    <insert id="save" parameterType="org.template.cloud.application.transaction.bean.TransactionLog">
+        INSERT INTO transaction_log (id, operation_id, status,name, create_time)
+        VALUES ( #{id}, #{operationId}, #{status}, #{name}, #{createTime})
+    </insert>
+
+    <insert id="saveList" parameterType="org.template.cloud.application.transaction.bean.TransactionLog">
+        INSERT INTO transaction_log (id, operation_id, name,status, create_time)
+        VALUES
+        <foreach collection="list" item="obj" separator=",">
+            (#{obj.id}, #{obj.operationId}, #{obj.name}, #{obj.status}, #{obj.createTime})
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="org.template.cloud.application.transaction.bean.TransactionLog">
+        UPDATE transaction_log
+        SET operationId = #{operationId},status = #{status}
+        WHERE id=#{id}
+    </update>
+</mapper>

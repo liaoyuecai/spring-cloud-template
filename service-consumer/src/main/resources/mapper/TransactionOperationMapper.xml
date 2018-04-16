@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.template.cloud.application.transaction.dao.TransactionOperationMapper">
+
+    <select id="findAll" resultType="org.template.cloud.application.transaction.bean.TransactionOperation">
+        SELECT *
+        FROM transaction_operation
+    </select>
+
+    <insert id="save" parameterType="org.template.cloud.application.transaction.bean.TransactionOperation">
+        INSERT INTO transaction_operation (id, transaction_id,topic, name,operation,params,status, create_time)
+        VALUES ( #{id}, #{transactionId}, #{topic}, #{name}, #{operation}, #{params},#{status}, #{createTime})
+    </insert>
+
+    <insert id="saveList" parameterType="org.template.cloud.application.transaction.bean.TransactionOperation">
+        INSERT INTO transaction_operation (id, transaction_id,topic, name,operation,params,status, create_time)
+        VALUES
+        <foreach collection="list" item="obj" separator=",">
+            ( #{obj.id}, #{obj.transactionId}, #{obj.topic}, #{obj.name}, #{obj.operation},
+            #{obj.params},#{obj.status}, #{obj.createTime})
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="org.template.cloud.application.transaction.bean.TransactionOperation">
+        UPDATE transaction_operation
+        SET status = #{status}
+        WHERE id=#{id}
+    </update>
+</mapper>

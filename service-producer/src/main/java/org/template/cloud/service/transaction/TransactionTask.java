@@ -1,0 +1,14 @@
+package org.template.cloud.service.transaction;
+
+import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.cloud.stream.messaging.Sink;
+
+@EnableBinding(Sink.class)
+final class TransactionTask {
+
+    @StreamListener(Sink.INPUT)
+    public void receive(Object payload){
+        System.out.println("Recevied:"+payload);
+    }
+}

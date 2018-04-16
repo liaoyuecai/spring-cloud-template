@@ -4,12 +4,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.template.cloud.service.ServiceApplication;
 import org.template.cloud.service.domain.bean.mysql.User;
 import org.template.cloud.service.service.mysql.UserService;
+import org.template.cloud.service.transaction.service.TransactionService;
+import org.template.cloud.service.transaction.Transaction;
+import org.template.cloud.service.transaction.TransactionBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,8 @@ import java.util.List;
 public class MysqlTest {
     @Autowired
     UserService userService;
+    @Autowired
+    TransactionService transactionService;
 
     public void userTest() {
         User user = new User();
@@ -33,13 +36,29 @@ public class MysqlTest {
     public void insertList() {
         List<User> list = new ArrayList();
         User user;
-        for (int i=0;i<50;i++){
+        for (int i = 0; i < 50; i++) {
             user = new User();
-            user.setUserName("No"+i);
+            user.setUserName("No" + i);
             user.setPassword("123456");
             list.add(user);
         }
         userService.insert(list);
+    }
+
+    @Test
+    public void findUsers() {
+        List<User> list = userService.findAll();
+        for (User user : list) {
+            System.out.println(user.getUserName());
+        }
+    }
+
+    @Test
+    public void addTransaction() {
+        Transaction transaction = new TransactionBuilder("test").
+                addOperation("service", 1, new Object()).
+                addOperation("delete", "service", 2, new Object()).get();
+        transactionService.createTransaction(transaction);
     }
 
 }

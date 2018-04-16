@@ -6,7 +6,19 @@ spring:
         service-id: config
       profile: dev
       label: master
+    bus:
+      trace:
+        enabled: true
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
 endpoints:
   refresh:
     enabled: true
     sensitive: false
+management:
+  security:
+    enabled: false
