@@ -12,4 +12,8 @@ public interface TransactionLogMapper extends TransactionMapper<TransactionLog> 
     int saveList(@Param(value = "list") List<TransactionLog> list);
 
     int update(TransactionLog t);
+
+    int getStatusById(String id);
+
+    int execute(String id);
 }

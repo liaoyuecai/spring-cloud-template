@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.template.cloud.transaction.dao.TransactionOperationMapper">
+
+
+    <select id="getAllNonExecution" parameterType="org.template.cloud.transaction.bean.TransactionLog"
+            resultType="org.template.cloud.transaction.bean.TransactionOperation">
+        SELECT id,no,transaction_id,topic,name,operation,params,status,create_time
+        FROM transaction_operation WHERE status = 0 AND transaction_id IN
+        <foreach collection="list" item="obj" open="(" close=")" separator=",">
+            #{obj.id}
+        </foreach>
+        ORDER BY transaction_id,no
+    </select>
+    <select id="getAllOperations" parameterType="org.template.cloud.transaction.bean.TransactionLog"
+            resultType="org.template.cloud.transaction.bean.TransactionOperation">
+        SELECT id,no,transaction_id,topic,name,operation,params,status,create_time
+        FROM transaction_operation
+        WHERE transaction_id IN
+        <foreach collection="list" item="obj" open="(" close=")" separator=",">
+            #{obj.id}
+        </foreach>
+        ORDER BY transaction_id,no
+    </select>
+
+    <select id="getByTransactionId" parameterType="string"
+            resultType="org.template.cloud.transaction.bean.TransactionOperation">
+        SELECT id,no,transaction_id,topic,name,operation,params,status,create_time
+        FROM transaction_operation
+        WHERE transaction_id = #{id}
+        ORDER BY no
+    </select>
+
+    <delete id="deleteByDate" parameterType="java.time.LocalDate">
+        DELETE FROM transaction_operation WHERE create_time &lt;= #{date}
+    </delete>
+</mapper>

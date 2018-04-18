@@ -1,7 +1,7 @@
-package org.template.cloud.service.transaction.bean;
+package org.template.cloud.transaction.bean;
 
 import lombok.Data;
-import org.template.cloud.service.transaction.Transaction;
+import org.template.cloud.transaction.Transaction;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -30,6 +30,11 @@ public class TransactionOperation implements Serializable {
     String params;
     Integer status = Transaction.NON_EXECUTION;
     Date createTime = new Date();
+
+    public TransactionOperation execute() {
+        status = Transaction.SUCCESS;
+        return this;
+    }
 
     public void success() {
         status = Transaction.SUCCESS;

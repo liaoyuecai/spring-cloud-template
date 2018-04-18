@@ -22,6 +22,9 @@ endpoints:
 management:
   security:
     enabled: false
-logging:
-  file: logs/${spring.application.name}.log
-  level: info
+
+transaction:
+  task:
+    check-interval: 0/5 * * * * *
+    clean-interval: 0/5 * * * * *
+    save-date: 5

@@ -1,6 +1,8 @@
 package org.template.cloud.application.transaction.service.impl;
 
 
+import com.alibaba.fastjson.JSON;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,10 +24,14 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     TransactionOperationMapper transactionOperationMapper;
 
+    @Autowired
+    private AmqpTemplate rabbitTemplate;
+
     @Override
     public void createTransaction(Transaction transaction) {
         TransactionLog log = new TransactionLog(transaction);
         transactionLogMapper.save(log);
         transactionOperationMapper.saveList(transaction.getOperations());
+        rabbitTemplate.convertAndSend(transaction.topic(), JSON.toJSONString(transaction));
     }
 }

@@ -12,4 +12,8 @@ public interface TransactionOperationMapper extends TransactionMapper<Transactio
     int saveList(@Param(value = "list") List<TransactionOperation> list);
 
     int update(TransactionOperation t);
+
+    int executing(String id);
+
+    int getStatusById(String id);
 }

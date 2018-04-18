@@ -14,6 +14,7 @@
         <module>service-consumer</module>
         <module>config-server</module>
         <module>zuul-server</module>
+        <module>mq-transaction</module>
     </modules>
 
     <parent>

@@ -1,7 +1,7 @@
-package org.template.cloud.service.transaction.bean;
+package org.template.cloud.transaction.bean;
 
 import lombok.Data;
-import org.template.cloud.service.transaction.Transaction;
+import org.template.cloud.transaction.Transaction;
 
 import java.util.Date;
 
@@ -22,8 +22,7 @@ public class TransactionLog {
     public TransactionLog(Transaction transaction) {
         this.id = transaction.getId();
         this.name = transaction.getName();
-        if (transaction.hasNext()   )
-            this.operationId = transaction.next().getId();
+        this.operationId = transaction.next().getId();
         this.status = transaction.getStatus();
     }
 }

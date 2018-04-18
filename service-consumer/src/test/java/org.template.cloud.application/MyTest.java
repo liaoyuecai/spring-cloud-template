@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.template.cloud.application.transaction.Transaction;
-import org.template.cloud.application.transaction.TransactionBuilder;
 import org.template.cloud.application.transaction.service.TransactionService;
+import org.template.cloud.config.ServiceApiConfig;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -18,9 +18,14 @@ public class MyTest {
 
     @Test
     public void addTransaction() {
-        Transaction transaction = new TransactionBuilder("test").
-                addOperation("service", 1, new Object()).
-                addOperation("delete", "service", 2, new Object()).get();
+        User user = new User();
+        user.setPassword("122333");
+        user.setUserName("lixiaolong");
+        Transaction transaction = new Transaction().
+                addOperation("serviceQueue", ServiceApiConfig.USER_INSERT, user);
+        transaction.setName("test");
+        user.setPassword("askhdalk");
+        transaction.addOperation("userUpdate", "serviceQueue", ServiceApiConfig.USER_UPDATE, user);
         transactionService.createTransaction(transaction);
     }
 }

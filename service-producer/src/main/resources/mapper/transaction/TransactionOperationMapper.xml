@@ -27,4 +27,14 @@
         SET status = #{status}
         WHERE id=#{id}
     </update>
+
+    <update id="executing" parameterType="string">
+        UPDATE transaction_operation
+        SET status = 1
+        WHERE id=#{id} AND status = 0
+    </update>
+
+    <select id="getStatusById" parameterType="string" resultType="int">
+        SELECT status FROM transaction_operation WHERE id = #{id}
+    </select>
 </mapper>

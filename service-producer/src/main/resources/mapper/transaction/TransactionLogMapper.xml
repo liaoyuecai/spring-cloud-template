@@ -23,7 +23,17 @@
 
     <update id="update" parameterType="org.template.cloud.service.transaction.bean.TransactionLog">
         UPDATE transaction_log
-        SET operationId = #{operationId},status = #{status}
+        SET operation_id = #{operationId},status = #{status}
         WHERE id=#{id}
     </update>
+
+    <update id="execute" parameterType="string">
+        UPDATE transaction_log
+        SET status = 1
+        WHERE id=#{id} AND (status = 0 OR status = 1)
+    </update>
+
+    <select id="getStatusById" parameterType="string" resultType="int">
+        SELECT status FROM transaction_log WHERE id = #{id}
+    </select>
 </mapper>

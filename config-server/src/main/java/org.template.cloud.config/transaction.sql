@@ -23,7 +23,7 @@ CREATE TABLE `transaction_fail` (
   `id` varchar(64) NOT NULL,
   `transaction_id` varchar(64) DEFAULT NULL COMMENT '事务ID',
   `operation_id` varchar(64) DEFAULT NULL COMMENT '操作ID',
-  `fail_cause` varchar(200) DEFAULT NULL COMMENT '失败原因',
+  `fail_cause` text DEFAULT NULL COMMENT '失败原因',
   `create_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

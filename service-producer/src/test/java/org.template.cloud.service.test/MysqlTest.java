@@ -10,7 +10,6 @@ import org.template.cloud.service.domain.bean.mysql.User;
 import org.template.cloud.service.service.mysql.UserService;
 import org.template.cloud.service.transaction.service.TransactionService;
 import org.template.cloud.service.transaction.Transaction;
-import org.template.cloud.service.transaction.TransactionBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,14 +50,6 @@ public class MysqlTest {
         for (User user : list) {
             System.out.println(user.getUserName());
         }
-    }
-
-    @Test
-    public void addTransaction() {
-        Transaction transaction = new TransactionBuilder("test").
-                addOperation("service", 1, new Object()).
-                addOperation("delete", "service", 2, new Object()).get();
-        transactionService.createTransaction(transaction);
     }
 
 }
