@@ -18,7 +18,7 @@ public abstract class TransactionService {
      * @param transaction
      * @return
      */
-    protected TransactionOperation executable(Transaction transaction) {
+    protected final TransactionOperation executable(Transaction transaction) {
         TransactionOperation operation = transaction.next();
         if (transactionRemote.executeTransaction(operation.getTransactionId()) == 0)
             return null;
@@ -33,7 +33,7 @@ public abstract class TransactionService {
      *
      * @param transaction
      */
-    protected void success(Transaction transaction) {
+    protected final void success(Transaction transaction) {
         TransactionOperation operation = transaction.next();
         operation.success();
         operationLog(operation);
@@ -47,7 +47,7 @@ public abstract class TransactionService {
      *
      * @param transaction
      */
-    protected void fail(Transaction transaction, Exception e) {
+    protected final void fail(Transaction transaction, Exception e) {
         TransactionOperation operation = transaction.next();
         operation.fail();
         operationLog(operation);
@@ -58,12 +58,12 @@ public abstract class TransactionService {
      *
      * @param operation
      */
-    private void operationLog(TransactionOperation operation) {
+    private final void operationLog(TransactionOperation operation) {
         transactionRemote.updateOperation(JSON.toJSONString(operation));
     }
 
 
-    protected <T> T getParam(TransactionOperation operation, Class<T> clzz) {
+    protected final <T> T getParam(TransactionOperation operation, Class<T> clzz) {
         return JSON.parseObject(operation.getParams(), clzz);
     }
 }
