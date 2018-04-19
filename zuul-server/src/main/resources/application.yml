@@ -12,9 +12,6 @@ eureka:
       default-zone: 127.0.0.1:8761/eureka/
 zuul:
   routes:
-    service:
-      service-id: service
-      path: /service/**
     application:
       service-id: application
       path: /application/**
