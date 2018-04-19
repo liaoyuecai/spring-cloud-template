@@ -10,6 +10,13 @@ import java.util.List;
 
 @Mapper
 public interface TransactionOperationMapper extends ApplicationMapper<TransactionOperation> {
+
+    int save(TransactionOperation t);
+
+    int saveList(@Param(value = "list") List<TransactionOperation> list);
+
+    int update(TransactionOperation t);
+
     List<TransactionOperation> getAllNonExecution(@Param(value = "list") List<TransactionLog> list);
 
     List<TransactionOperation> getAllOperations(@Param(value = "list") List<TransactionLog> list);
@@ -17,4 +24,8 @@ public interface TransactionOperationMapper extends ApplicationMapper<Transactio
     List<TransactionOperation> getByTransactionId(String id);
 
     int deleteByDate(LocalDate date);
+
+    int executing(String id);
+
+    int getStatusById(String id);
 }

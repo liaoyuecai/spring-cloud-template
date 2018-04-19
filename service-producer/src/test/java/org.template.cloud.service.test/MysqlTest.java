@@ -8,8 +8,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.template.cloud.service.ServiceApplication;
 import org.template.cloud.service.domain.bean.mysql.User;
 import org.template.cloud.service.service.mysql.UserService;
-import org.template.cloud.service.transaction.service.TransactionService;
-import org.template.cloud.service.transaction.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +18,6 @@ public class MysqlTest {
     @Autowired
     UserService userService;
     @Autowired
-    TransactionService transactionService;
 
     public void userTest() {
         User user = new User();

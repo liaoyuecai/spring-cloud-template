@@ -2,6 +2,7 @@ package org.template.cloud.service.service.mysql.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.template.cloud.service.dao.mysql.mapper.UserMapper;
 import org.template.cloud.service.domain.bean.mysql.User;
 import org.template.cloud.service.service.mysql.UserService;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
+@Transactional("txManager")
 public class UserServiceImpl implements UserService {
 
     @Autowired

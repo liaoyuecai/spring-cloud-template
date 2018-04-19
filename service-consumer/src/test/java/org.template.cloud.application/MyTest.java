@@ -5,16 +5,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.template.cloud.application.transaction.Transaction;
-import org.template.cloud.application.transaction.service.TransactionService;
+import org.template.cloud.transaction.Transaction;
 import org.template.cloud.config.ServiceApiConfig;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class MyTest {
-
-    @Autowired
-    TransactionService transactionService;
 
     @Test
     public void addTransaction() {
@@ -26,6 +22,6 @@ public class MyTest {
         transaction.setName("test");
         user.setPassword("askhdalk");
         transaction.addOperation("userUpdate", "serviceQueue", ServiceApiConfig.USER_UPDATE, user);
-        transactionService.createTransaction(transaction);
+//        transactionService.createTransaction(transaction);
     }
 }

@@ -22,7 +22,8 @@ public class TransactionLog {
     public TransactionLog(Transaction transaction) {
         this.id = transaction.getId();
         this.name = transaction.getName();
-        this.operationId = transaction.next().getId();
+        if (transaction.hasNext())
+            this.operationId = transaction.next().getId();
         this.status = transaction.getStatus();
     }
 }

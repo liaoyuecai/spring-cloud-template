@@ -2,14 +2,14 @@ package org.template.cloud.service.dao.mysql.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.template.cloud.service.dao.mysql.BusinessMapper;
+import org.template.cloud.service.dao.mysql.ServiceMapper;
 import org.template.cloud.service.domain.bean.mysql.User;
 
 import java.util.List;
 
 
 @Mapper
-public interface UserMapper extends BusinessMapper<User> {
+public interface UserMapper extends ServiceMapper<User> {
     List<User> findAll();
 
     User getUserById(String id);

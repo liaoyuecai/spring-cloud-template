@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.template.cloud.config.ServiceApiConfig;
 import org.template.cloud.service.domain.bean.mysql.User;
+import org.template.cloud.service.remote.TransactionRemote;
 import org.template.cloud.service.service.mysql.UserService;
-import org.template.cloud.service.transaction.bean.TransactionOperation;
-import org.template.cloud.service.transaction.service.TransactionService;
+import org.template.cloud.transaction.bean.TransactionOperation;
 
 @Component
 @Log4j
@@ -19,8 +19,11 @@ public class ServiceApiExecutor {
 
     @Autowired
     UserService userService;
+//    @Autowired
+//    TransactionService transactionService;
+
     @Autowired
-    TransactionService transactionService;
+    TransactionRemote transactionRemote;
 
     /**
      * 执行事务方法
@@ -33,9 +36,9 @@ public class ServiceApiExecutor {
     int execute(TransactionOperation operation) {
         int status = operation.getStatus();
         try {
-            if (transactionService.executeTransaction(operation.getTransactionId()) == 0)
+            if (transactionRemote.executeTransaction(operation.getTransactionId()) == 0)
                 return USELESS;
-            if (transactionService.executeOperation(operation.getId()) == 0)
+            if (transactionRemote.executeOperation(operation.getId()) == 0)
                 return EXECUTED;
             operation(operation);
             operation.success();
@@ -45,7 +48,7 @@ public class ServiceApiExecutor {
             throw new RuntimeException(e);
         } finally {
             if (status != operation.getStatus())
-                transactionService.updateOperation(operation);
+                transactionRemote.updateOperation(JSON.toJSONString(operation));
         }
     }
 

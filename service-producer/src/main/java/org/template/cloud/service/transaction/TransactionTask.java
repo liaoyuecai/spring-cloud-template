@@ -8,8 +8,9 @@ import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.template.cloud.service.transaction.bean.TransactionFail;
-import org.template.cloud.service.transaction.service.TransactionService;
+import org.template.cloud.service.remote.TransactionRemote;
+import org.template.cloud.transaction.bean.TransactionFail;
+import org.template.cloud.transaction.Transaction;
 
 @Component
 @RabbitListener(queues = "serviceQueue")
@@ -21,9 +22,10 @@ class TransactionTask {
     @Autowired
     private AmqpTemplate rabbitTemplate;
     @Autowired
-    TransactionService transactionService;
-    @Autowired
     ServiceApiExecutor serviceApiExecutor;
+
+    @Autowired
+    TransactionRemote transactionRemote;
 
     @RabbitHandler
     public void receive(String message) {
@@ -66,7 +68,7 @@ class TransactionTask {
 
     void next(Transaction transaction, boolean statusChange, boolean executeStatus) {
         if (!statusChange)
-            transactionService.updateTransaction(transaction);
+            transactionRemote.updateTransaction(JSON.toJSONString(transaction));
         if (transaction.hasNext() && executeStatus)
             rabbitTemplate.convertAndSend(transaction.topic(), JSON.toJSONString(transaction));
     }
@@ -77,6 +79,6 @@ class TransactionTask {
         fail.setTransactionId(transaction.getId());
         fail.setOperationId(operationId);
         fail.setFailCause(e.getMessage());
-        transactionService.operationFail(fail);
+        transactionRemote.operationFail(JSON.toJSONString(fail));
     }
 }

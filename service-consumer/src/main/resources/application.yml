@@ -1,5 +1,5 @@
 server:
-  port: 7071
+  port: 7072
 
 
 spring:
@@ -7,7 +7,7 @@ spring:
     name: application
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/transaction?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Hongkong
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Hongkong&useSSL=false
     username: root
     password: 123456
     type: com.zaxxer.hikari.HikariDataSource
@@ -16,9 +16,4 @@ spring:
       bindings:
         output:
           destination: my-test-channel
-mybatis:
-  mapperLocations: classpath:mapper/*.xml
-  typeAliasesPackage: tk.mapper.model
-  configuration:
-    map-underscore-to-camel-case: true
 

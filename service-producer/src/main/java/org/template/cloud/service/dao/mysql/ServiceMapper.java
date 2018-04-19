@@ -8,5 +8,5 @@ import tk.mybatis.mapper.common.MySqlMapper;
  * 被继承的Mapper，一般业务Mapper继承它
  * 特别注意，该接口不能被扫描到，否则会出错
  */
-public interface BusinessMapper<T> extends Mapper<T>, MySqlMapper<T> {
+public interface ServiceMapper<T> extends Mapper<T>, MySqlMapper<T> {
 }
