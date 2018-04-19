@@ -18,7 +18,8 @@ spring:
     stream:
       bindings:
         input:
-          destination: my-test-channel
+          destination: rabbitMQ
+          group: rabbitMQ
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   typeAliasesPackage: tk.mapper.model

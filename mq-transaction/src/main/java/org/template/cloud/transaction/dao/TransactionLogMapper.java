@@ -2,7 +2,7 @@ package org.template.cloud.transaction.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.template.cloud.transaction.bean.TransactionLog;
+import org.template.cloud.bean.transaction.TransactionLog;
 
 import java.time.LocalDate;
 import java.util.List;

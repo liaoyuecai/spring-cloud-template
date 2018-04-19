@@ -4,17 +4,17 @@
 <mapper namespace="org.template.cloud.transaction.dao.TransactionOperationMapper">
 
 
-    <select id="findAll" resultType="org.template.cloud.transaction.bean.TransactionOperation">
+    <select id="findAll" resultType="org.template.cloud.bean.transaction.TransactionOperation">
         SELECT *
         FROM transaction_operation
     </select>
 
-    <insert id="save" parameterType="org.template.cloud.transaction.bean.TransactionOperation">
+    <insert id="save" parameterType="org.template.cloud.bean.transaction.TransactionOperation">
         INSERT INTO transaction_operation (id, transaction_id,topic, name,operation,params,status, create_time)
         VALUES ( #{id}, #{transactionId}, #{topic}, #{name}, #{operation}, #{params},#{status}, #{createTime})
     </insert>
 
-    <insert id="saveList" parameterType="org.template.cloud.transaction.bean.TransactionOperation">
+    <insert id="saveList" parameterType="org.template.cloud.bean.transaction.TransactionOperation">
         INSERT INTO transaction_operation (id, transaction_id,topic, name,operation,params,status, create_time)
         VALUES
         <foreach collection="list" item="obj" separator=",">
@@ -23,7 +23,7 @@
         </foreach>
     </insert>
 
-    <update id="update" parameterType="org.template.cloud.transaction.bean.TransactionOperation">
+    <update id="update" parameterType="org.template.cloud.bean.transaction.TransactionOperation">
         UPDATE transaction_operation
         SET status = #{status}
         WHERE id=#{id}
@@ -39,8 +39,8 @@
         SELECT status FROM transaction_operation WHERE id = #{id}
     </select>
 
-    <select id="getAllNonExecution" parameterType="org.template.cloud.transaction.bean.TransactionLog"
-            resultType="org.template.cloud.transaction.bean.TransactionOperation">
+    <select id="getAllNonExecution" parameterType="org.template.cloud.bean.transaction.TransactionLog"
+            resultType="org.template.cloud.bean.transaction.TransactionOperation">
         SELECT id,no,transaction_id,topic,name,operation,params,status,create_time
         FROM transaction_operation WHERE status = 0 AND transaction_id IN
         <foreach collection="list" item="obj" open="(" close=")" separator=",">
@@ -48,8 +48,8 @@
         </foreach>
         ORDER BY transaction_id,no
     </select>
-    <select id="getAllOperations" parameterType="org.template.cloud.transaction.bean.TransactionLog"
-            resultType="org.template.cloud.transaction.bean.TransactionOperation">
+    <select id="getAllOperations" parameterType="org.template.cloud.bean.transaction.TransactionLog"
+            resultType="org.template.cloud.bean.transaction.TransactionOperation">
         SELECT id,no,transaction_id,topic,name,operation,params,status,create_time
         FROM transaction_operation
         WHERE transaction_id IN
@@ -60,7 +60,7 @@
     </select>
 
     <select id="getByTransactionId" parameterType="string"
-            resultType="org.template.cloud.transaction.bean.TransactionOperation">
+            resultType="org.template.cloud.bean.transaction.TransactionOperation">
         SELECT id,no,transaction_id,topic,name,operation,params,status,create_time
         FROM transaction_operation
         WHERE transaction_id = #{id}

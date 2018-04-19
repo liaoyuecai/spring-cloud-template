@@ -15,6 +15,7 @@
         <module>config-server</module>
         <module>zuul-server</module>
         <module>mq-transaction</module>
+        <module>bean-repository</module>
     </modules>
 
     <parent>
@@ -88,6 +89,11 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+        </dependency>
+        <dependency>
+            <artifactId>bean-repository</artifactId>
+            <groupId>template</groupId>
+            <version>1.0.1</version>
         </dependency>
     </dependencies>
 </project>

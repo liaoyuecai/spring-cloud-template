@@ -1,7 +1,8 @@
 package org.template.cloud.service.service.mysql;
 
 
-import org.template.cloud.service.domain.bean.mysql.User;
+import org.template.cloud.bean.module.User;
+import org.template.cloud.bean.transaction.Transaction;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -15,9 +16,13 @@ public interface UserService {
 
     int insert(User user);
 
+    boolean insert(Transaction transaction);
+
     int insert(List<User> users);
 
     int update(User user);
+
+    boolean update(Transaction transaction);
 
     int delete(String id);
 

@@ -1,4 +1,4 @@
-package org.template.cloud.service.domain.bean.mongo;
+package org.template.cloud.bean.module;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

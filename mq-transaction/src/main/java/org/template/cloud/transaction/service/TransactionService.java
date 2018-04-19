@@ -1,9 +1,9 @@
 package org.template.cloud.transaction.service;
 
 
-import org.template.cloud.transaction.Transaction;
-import org.template.cloud.transaction.bean.TransactionFail;
-import org.template.cloud.transaction.bean.TransactionOperation;
+import org.template.cloud.bean.transaction.Transaction;
+import org.template.cloud.bean.transaction.TransactionFail;
+import org.template.cloud.bean.transaction.TransactionOperation;
 
 import java.time.LocalDate;
 import java.util.List;

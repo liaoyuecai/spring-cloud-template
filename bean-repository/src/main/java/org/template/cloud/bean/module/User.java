@@ -1,4 +1,4 @@
-package org.template.cloud.application.bean;
+package org.template.cloud.bean.module;
 
 import lombok.Data;
 

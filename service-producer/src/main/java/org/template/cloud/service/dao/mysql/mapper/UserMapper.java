@@ -2,8 +2,8 @@ package org.template.cloud.service.dao.mysql.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.template.cloud.bean.module.User;
 import org.template.cloud.service.dao.mysql.ServiceMapper;
-import org.template.cloud.service.domain.bean.mysql.User;
 
 import java.util.List;
 

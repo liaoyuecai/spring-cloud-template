@@ -5,15 +5,10 @@ server:
 spring:
   application:
     name: application
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Hongkong&useSSL=false
-    username: root
-    password: 123456
-    type: com.zaxxer.hikari.HikariDataSource
   cloud:
     stream:
       bindings:
-        output:
-          destination: my-test-channel
+        input:
+          destination: rabbitMQ
+          group: rabbitMQ
 

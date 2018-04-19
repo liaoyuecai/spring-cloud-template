@@ -1,7 +1,6 @@
-package org.template.cloud.transaction.bean;
+package org.template.cloud.bean.transaction;
 
 import lombok.Data;
-import org.template.cloud.transaction.Transaction;
 
 import java.util.Date;
 

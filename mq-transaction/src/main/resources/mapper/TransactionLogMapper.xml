@@ -14,17 +14,17 @@
     </select>
 
 
-    <select id="findAll" resultType="org.template.cloud.transaction.bean.TransactionLog">
+    <select id="findAll" resultType="org.template.cloud.bean.transaction.TransactionLog">
         SELECT *
         FROM transaction_log
     </select>
 
-    <insert id="save" parameterType="org.template.cloud.transaction.bean.TransactionLog">
+    <insert id="save" parameterType="org.template.cloud.bean.transaction.TransactionLog">
         INSERT INTO transaction_log (id, operation_id, status,name, create_time)
         VALUES ( #{id}, #{operationId}, #{status}, #{name}, #{createTime})
     </insert>
 
-    <insert id="saveList" parameterType="org.template.cloud.transaction.bean.TransactionLog">
+    <insert id="saveList" parameterType="org.template.cloud.bean.transaction.TransactionLog">
         INSERT INTO transaction_log (id, operation_id, name,status, create_time)
         VALUES
         <foreach collection="list" item="obj" separator=",">
@@ -32,13 +32,13 @@
         </foreach>
     </insert>
 
-    <update id="update" parameterType="org.template.cloud.transaction.bean.TransactionLog">
+    <update id="update" parameterType="org.template.cloud.bean.transaction.TransactionLog">
         UPDATE transaction_log
         SET operation_id = #{operationId},status = #{status}
         WHERE id=#{id}
     </update>
 
-    <select id="getAllNonExecution" resultType="org.template.cloud.transaction.bean.TransactionLog">
+    <select id="getAllNonExecution" resultType="org.template.cloud.bean.transaction.TransactionLog">
         SELECT id,operation_id,name,status,create_time FROM transaction_log
         WHERE status = 0
     </select>

@@ -3,8 +3,8 @@ package org.template.cloud.service.service.mongo.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.template.cloud.bean.module.Transcript;
 import org.template.cloud.service.dao.mongo.TranscriptRepository;
-import org.template.cloud.service.domain.bean.mongo.Transcript;
 import org.template.cloud.service.service.mongo.TranscriptService;
 
 import java.util.Date;

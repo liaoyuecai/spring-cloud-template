@@ -10,6 +10,8 @@ import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.stereotype.Component;
+import org.template.cloud.bean.transaction.Transaction;
+import org.template.cloud.transaction.rabbit.RabbitProducer;
 import org.template.cloud.transaction.service.TransactionService;
 
 import java.time.LocalDate;
@@ -25,6 +27,8 @@ public class TransactionManager implements SchedulingConfigurer {
     @Autowired
     TransactionService transactionService;
 
+    @Autowired
+    RabbitProducer rabbitProducer;
 
     @Value("${transaction.task.check-interval}")
     String checkInterval;

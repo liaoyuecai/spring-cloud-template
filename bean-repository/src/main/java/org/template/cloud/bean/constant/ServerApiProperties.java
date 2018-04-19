@@ -1,6 +1,6 @@
-package org.template.cloud.config;
+package org.template.cloud.bean.constant;
 
-public final class ServiceApiConfig {
+public class ServerApiProperties {
     public static final int USER_INSERT = 0;
     public static final int USER_UPDATE = 1;
 }

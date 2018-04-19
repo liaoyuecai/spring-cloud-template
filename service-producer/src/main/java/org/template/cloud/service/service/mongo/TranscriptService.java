@@ -1,7 +1,7 @@
 package org.template.cloud.service.service.mongo;
 
 
-import org.template.cloud.service.domain.bean.mongo.Transcript;
+import org.template.cloud.bean.module.Transcript;
 
 import java.util.Date;
 import java.util.List;

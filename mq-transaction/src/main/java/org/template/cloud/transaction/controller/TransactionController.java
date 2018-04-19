@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.template.cloud.transaction.Transaction;
-import org.template.cloud.transaction.bean.TransactionFail;
-import org.template.cloud.transaction.bean.TransactionOperation;
+import org.template.cloud.bean.transaction.Transaction;
+import org.template.cloud.bean.transaction.TransactionFail;
+import org.template.cloud.bean.transaction.TransactionOperation;
 import org.template.cloud.transaction.service.TransactionService;
 
 @RestController

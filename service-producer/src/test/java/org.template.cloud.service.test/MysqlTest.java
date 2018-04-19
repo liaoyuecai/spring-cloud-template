@@ -5,8 +5,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.template.cloud.bean.module.User;
 import org.template.cloud.service.ServiceApplication;
-import org.template.cloud.service.domain.bean.mysql.User;
 import org.template.cloud.service.service.mysql.UserService;
 
 import java.util.ArrayList;
