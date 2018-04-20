@@ -5,8 +5,6 @@ import org.springframework.messaging.SubscribableChannel;
 
 public interface RabbitConfig {
 
-    //    @Value("transaction-output default transaction-output")
-//    String INPUT = "";
     String INPUT = "input";
 
     @Input(INPUT)
