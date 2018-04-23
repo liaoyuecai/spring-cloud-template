@@ -20,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
 import org.template.cloud.bean.module.BankCard;
 import org.template.cloud.service.transaction.tcc.SpringUtil;
 import org.template.cloud.service.transaction.tcc.TccManager;
+import org.template.cloud.tcc.client.TransactionClient;
 
 import javax.sql.DataSource;
 import java.lang.reflect.Method;
@@ -55,42 +56,7 @@ public class ServiceApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ServiceApplication.class, args);
-        TccManager.init("org.template.cloud.service.service");
-        try {
-            String serviceName = "bankCardService";
-            String methodName = "update";
-            List<Object> list = new ArrayList();
-            BankCard card = new BankCard();
-            card.setId("1");
-            card.setUserId("1");
-            card.setBalance(10);
-            list.add(card);
-            Object service = TccManager.serviceMap.get(serviceName);
-            Class[] classes = TccManager.paramMap.get(serviceName + "." + methodName);
-            Transactional t = service.getClass().getAnnotation(Transactional.class);
-            DataSourceTransactionManager manager = (DataSourceTransactionManager) SpringUtil.getBean(t.value());
-            if (classes == null) {
-                Method execute = service.getClass().getDeclaredMethod(methodName);
-                execute.invoke(service);
-            } else {
-                String params = JSON.toJSONString(list);
-                JSONArray paramList = JSON.parseArray(params);
-                int m = paramList.size();
-                Object[] params1 = new Object[paramList.size()];
-                for (int i = 0; i < m; i++) {
-                    params1[i] = paramList.getObject(i, classes[i]);
-                }
-//                List<Object> paramList = JSON.parseObject(params, List.class);
-                Method execute = service.getClass().getDeclaredMethod(methodName, classes);
-                DefaultTransactionDefinition def = new DefaultTransactionDefinition();
-                def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
-                TransactionStatus status = manager.getTransaction(def);
-                execute.invoke(service, new Object[]{card});
-                manager.commit(status);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        TransactionClient.getInstance("service", "127.0.0.1", 5000);
     }
 
 

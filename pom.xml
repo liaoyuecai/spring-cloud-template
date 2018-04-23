@@ -16,6 +16,8 @@
         <module>zuul-server</module>
         <module>mq-transaction</module>
         <module>bean-repository</module>
+        <module>tcc-server</module>
+        <module>tcc-client</module>
     </modules>
 
     <parent>

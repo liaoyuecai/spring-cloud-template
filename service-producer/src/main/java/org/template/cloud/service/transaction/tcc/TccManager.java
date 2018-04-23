@@ -26,7 +26,7 @@ public final class TccManager {
     }
 
     public static synchronized void init(String serverName, String packageName) {
-        if (serverName != null)
+        if (serverName == null)
             return;
         TccManager.serverName = serverName;
         try {

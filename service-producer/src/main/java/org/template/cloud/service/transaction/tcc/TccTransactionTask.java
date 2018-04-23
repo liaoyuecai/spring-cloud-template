@@ -25,7 +25,7 @@ public class TccTransactionTask {
 //                execute.invoke(service);
 //            } else {
 //                String params = JSON.toJSONString(list);
-////                JSONArray paramList = JSON.parseArray(params);
+//                JSONArray paramList = JSON.parseArray(params);
 //                List<Object> paramList = JSON.parseObject(params, List.class);
 //                Method execute = service.getClass().getDeclaredMethod(methodName, classes);
 //                execute.invoke(service, paramList);
