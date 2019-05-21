@@ -4,6 +4,7 @@ package org.template.cloud.zuul;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.cors.CorsConfiguration;
@@ -13,6 +14,7 @@ import org.springframework.web.filter.CorsFilter;
 @EnableZuulProxy
 @SpringCloudApplication
 @EnableDiscoveryClient
+@EnableEurekaClient
 public class ZuulApplication {
     /**
      * 跨域Cors配置

@@ -2,7 +2,6 @@ server:
   port: 7666
 
 
-
 spring:
   application:
     name: config
@@ -12,7 +11,6 @@ spring:
         git:
           uri: https://github.com/liaoyuecai/configuration
           search-paths: cloud
-
 
 
 eureka:
