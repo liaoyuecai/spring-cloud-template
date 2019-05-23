@@ -18,6 +18,7 @@ import org.springframework.web.filter.CorsFilter;
 public class ZuulApplication {
     /**
      * 跨域Cors配置
+     *
      * @return
      */
     @Bean

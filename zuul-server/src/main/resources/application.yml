@@ -12,6 +12,11 @@ spring:
       probability: 0.1
      ## percentage: 1
       ## https://github.com/apache/incubator-zipkin
+  redis:
+    host: 3.95.90.26
+    port: 6379
+    password: 5325#@VeSync
+    timeout:  10000
 
 eureka:
   client:
@@ -22,4 +27,10 @@ zuul:
     application:
       service-id: application
       path: /application/**
+  
+  host:
+    connect-timeout-millis: 5000
+    socket-timeout-millis: 50000
+
+
 

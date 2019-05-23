@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config
+      profile: dev
+      label: master
+endpoints:
+  refresh:
+    enabled: true
+    sensitive: false

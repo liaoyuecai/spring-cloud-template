@@ -26,6 +26,7 @@
         <module>eureka-server</module>
         <module>config-server</module>
         <module>zuul-server</module>
+        <module>application</module>
     </modules>
 
 
@@ -64,10 +65,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.cloud</groupId>-->
-        <!--            <artifactId>spring-cloud-starter-bus-amqp</artifactId>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
@@ -78,19 +75,10 @@
             <artifactId>lombok</artifactId>
             <version>1.16.6</version>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.cloud</groupId>-->
-        <!--            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <artifactId>bean-repository</artifactId>-->
-        <!--            <groupId>template</groupId>-->
-        <!--            <version>1.0.2</version>-->
-        <!--        </dependency>-->
     </dependencies>
 </project>
